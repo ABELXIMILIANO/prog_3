@@ -21,11 +21,9 @@ public class Categoria implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Column(name = "denominacion")
     private String denominacion;
 
-    @OneToMany(mappedBy = "producto",cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "categoria",fetch = FetchType.EAGER)
     @Builder.Default
     private List<Producto> productos = new ArrayList<Producto>();
 }

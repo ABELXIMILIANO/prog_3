@@ -19,19 +19,15 @@ public class DetalleFactura implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Column(name = "cantidad")
     private int cantidad;
-
-    @Column(name = "subtotal")
     private double subtotal;
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "fk_producto")
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_producto", nullable = false)
     private Producto producto;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name= "detalle_fk_factura")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name= "fk_factura", nullable = false)
     private Factura factura;
 
 

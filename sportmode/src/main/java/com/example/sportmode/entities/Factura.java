@@ -22,21 +22,15 @@ public class Factura implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Column (name="fecha")
     private Date fecha;
-
-    @Column(name="numero")
     private int numero;
-
-    @Column(name = "total")
     private double total;
 
-    @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "factura", fetch = FetchType.EAGER, orphanRemoval = true)
     @Builder.Default
     private List<DetalleFactura> detalles = new ArrayList<DetalleFactura>();
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "fk_usuario")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_usuario", nullable = false)
     private Usuario usuario;
 }
