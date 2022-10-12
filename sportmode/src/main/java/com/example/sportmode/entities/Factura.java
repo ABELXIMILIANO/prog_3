@@ -1,9 +1,6 @@
 package com.example.sportmode.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,22 +12,21 @@ import java.util.List;
 @Table(name = "factura")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Builder
+@Getter
+@Setter
 public class Factura implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private Date fecha;
     private int numero;
     private double total;
 
-    @OneToMany(mappedBy = "factura", fetch = FetchType.EAGER, orphanRemoval = true)
-    @Builder.Default
+    @OneToMany(mappedBy = "factura", orphanRemoval = true)
     private List<DetalleFactura> detalles = new ArrayList<DetalleFactura>();
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "fk_usuario", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
 }
