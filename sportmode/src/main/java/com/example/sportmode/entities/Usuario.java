@@ -10,15 +10,13 @@ import java.util.List;
 @Table(name = "usuario")
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Setter
+@Getter
 public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
-    private int id;
+    private Long id;
     private String nombre;
     private String apellido;
     private boolean admin;
@@ -26,12 +24,11 @@ public class Usuario implements Serializable {
     private String email;
     private String contrasenia;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "fk_domicilio",nullable = false)
+    @OneToOne
+    @JoinColumn(name = "fk_domicilio")
     private Domicilio domicilio;
 
     @OneToMany(mappedBy = "usuario")
-    @Builder.Default
     private List<Factura> facturas = new ArrayList<Factura>();
 
 }

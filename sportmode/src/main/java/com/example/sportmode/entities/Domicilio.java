@@ -1,9 +1,6 @@
 package com.example.sportmode.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,20 +9,17 @@ import java.io.Serializable;
 @Table(name="domicilio")
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Data
+@Getter
+@Setter
 public class Domicilio implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nombreCalle;
     private int numero;
     private int cp;
     private String localidad;
     private String provincia;
-
-    @OneToOne(mappedBy = "domicilio")
-    private Usuario usuario;
 
 }

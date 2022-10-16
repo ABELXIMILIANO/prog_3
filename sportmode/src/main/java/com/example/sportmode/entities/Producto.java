@@ -1,9 +1,9 @@
 package com.example.sportmode.entities;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,13 +14,13 @@ import java.util.List;
 @Table(name = "producto")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Builder
+@Getter
+@Setter
 public class Producto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nombre;
     private double precio;
     private int stock;
@@ -28,12 +28,11 @@ public class Producto implements Serializable {
     private String talle;
     private String color;
 
-    @OneToMany(mappedBy = "producto",fetch = FetchType.EAGER)
-    @Builder.Default
+    @OneToMany(mappedBy = "producto")
     private List<DetalleFactura> detalles = new ArrayList<DetalleFactura>();
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name= "fk_categoria", nullable = false)
+    @ManyToOne
+    @JoinColumn(name= "fk_categoria")
     private Categoria categoria;
 
 }
