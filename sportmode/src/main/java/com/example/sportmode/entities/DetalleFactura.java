@@ -23,9 +23,4 @@ public class DetalleFactura implements Serializable {
     @JoinColumn(name = "fk_producto")
     private Producto producto;
 
-    @ManyToOne
-    @JoinColumn(name= "fk_factura")
-    private Factura factura;
-
-
 }
