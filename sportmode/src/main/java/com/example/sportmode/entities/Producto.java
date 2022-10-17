@@ -21,31 +21,19 @@ public class Producto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Column(name="nombre")
     private String nombre;
-
-    @Column(name="precio")
     private double precio;
-
-    @Column(name="stock")
     private int stock;
-
-    @Column(name="activo")
     private boolean activo;
-
-    @Column(name="talle")
     private String talle;
-
-    @Column(name="color")
     private String color;
 
-    @OneToMany(mappedBy = "producto",cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "producto",fetch = FetchType.EAGER)
     @Builder.Default
     private List<DetalleFactura> detalles = new ArrayList<DetalleFactura>();
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name= "producto_fk_categoria")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name= "fk_categoria", nullable = false)
     private Categoria categoria;
 
 }

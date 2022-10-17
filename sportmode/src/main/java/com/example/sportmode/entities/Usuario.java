@@ -19,27 +19,15 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private int id;
-
-    @Column(name = "nombre")
     private String nombre;
-
-    @Column(name = "apellido")
     private String apellido;
-
-    @Column(name = "admin")
     private boolean admin;
-
-    @Column(name = "dni", unique=true)
     private int dni;
-
-    @Column(name = "email", unique=true)
     private String email;
-
-    @Column(name = "contrasenia")
     private String contrasenia;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_domicilio")
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_domicilio",nullable = false)
     private Domicilio domicilio;
 
     @OneToMany(mappedBy = "usuario")
