@@ -1,9 +1,6 @@
 package com.example.sportmode.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,18 +11,15 @@ import java.util.List;
 @Table(name="categoria")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Builder
+@Getter
+@Setter
 public class Categoria implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @Column(name = "denominacion")
+    private Long id;
     private String denominacion;
 
-    @OneToMany(mappedBy = "producto",cascade = CascadeType.PERSIST)
-    @Builder.Default
+    @OneToMany(mappedBy = "categoria")
     private List<Producto> productos = new ArrayList<Producto>();
 }
