@@ -1,0 +1,24 @@
+.colorRojo {
+    background-color:#820000;
+}
+
+.btnBuscar{
+    color: white;
+    background-color:#820000
+}
+
+.bgColorBuscar{
+    background-color: #d9d9d9;
+}
+
+.inputBusqueda{
+    min-width:70%;
+}
+
+.imgAlinear{
+    float: left;
+}
+
+.ftBg{
+    background-color: black;
+}
