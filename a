@@ -1,0 +1,72 @@
+[33mcommit f37a35ae30882e3570513231d662c3dbc7c7852e[m[33m ([m[1;36mHEAD -> [m[1;32mdavid[m[33m)[m
+Author: David Huarachi <159david753@gmail.com>
+Date:   Sun Oct 16 01:27:25 2022 -0300
+
+    .
+
+[33mcommit 19e1bb44ce2f3c163e7b1a4b5b2720cb94388219[m[33m ([m[1;31morigin/fede[m[33m)[m
+Author: FeMauri <fede.mauri92@gmail.com>
+Date:   Fri Oct 7 15:49:22 2022 -0300
+
+    correccion en entidades
+
+[33mcommit 334b0cca2b02d4c6b06e8cd6ec77ee859cbe306b[m
+Merge: ae47e50 396723b
+Author: FeMauri <fede.mauri92@gmail.com>
+Date:   Fri Oct 7 15:20:51 2022 -0300
+
+    Merge remote-tracking branch 'origin/fede' into fede
+
+[33mcommit ae47e50a8c5e27d25144f79c62e010e63be8d0cc[m
+Merge: 76130a8 f93aa66
+Author: FeMauri <fede.mauri92@gmail.com>
+Date:   Fri Oct 7 14:54:21 2022 -0300
+
+    entidades
+
+[33mcommit 396723b35ff0c3ff6137182349a9bc99bd33afb0[m
+Merge: 76130a8 f93aa66
+Author: FeMauri <fede.mauri92@gmail.com>
+Date:   Fri Oct 7 14:54:21 2022 -0300
+
+    Merge remote-tracking branch 'origin/fede' into fede
+    
+    # Conflicts:
+    #       sportmode/src/main/resources/application.properties
+
+[33mcommit 76130a8c986f42ef1dc91f497bb48b645114a1b1[m
+Author: Flores_Abel <calamardoaf@hotmail.com>
+Date:   Thu Oct 6 00:18:45 2022 -0300
+
+    inicio
+
+[33mcommit f93aa662e2d3fa5bac46ffe23a6da1ce48a21c33[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/david[m[33m, [m[1;31morigin/abel[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Flores_Abel <calamardoaf@hotmail.com>
+Date:   Thu Oct 6 00:18:45 2022 -0300
+
+    inicio
+
+[33mcommit 39aba0cabba44d0436dccb26a240d9351144b34f[m
+Merge: f0b8abd a7f4921
+Author: Flores_Abel <calamardoaf@hotmail.com>
+Date:   Tue Aug 30 11:32:20 2022 -0300
+
+    Merge branch 'master' of https://github.com/ABELXIMILIANO/prog_3
+
+[33mcommit f0b8abd794bc1469b4a7861a0532097ee79eea5f[m
+Author: Flores_Abel <calamardoaf@hotmail.com>
+Date:   Tue Aug 30 11:22:38 2022 -0300
+
+    pdf
+
+[33mcommit a7f49211ea90e4866ecd07cc0322e51da91aeec4[m
+Author: Abel Flores <71732768+ABELXIMILIANO@users.noreply.github.com>
+Date:   Tue Aug 30 03:52:09 2022 -0300
+
+    Create README.md
+
+[33mcommit d99efadb2fe7b65653523e88d991ae918fd81b15[m
+Author: Flores_Abel <calamardoaf@hotmail.com>
+Date:   Tue Aug 30 03:48:21 2022 -0300
+
+    origin
