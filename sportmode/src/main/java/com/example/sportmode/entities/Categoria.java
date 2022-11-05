@@ -20,6 +20,4 @@ public class Categoria implements Serializable {
     private Long id;
     private String denominacion;
 
-    @OneToMany(mappedBy = "categoria")
-    private List<Producto> productos = new ArrayList<Producto>();
 }
