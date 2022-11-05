@@ -7,8 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 @Table(name = "producto")
@@ -28,10 +27,9 @@ public class Producto implements Serializable {
     private String talle;
     private String color;
 
-    @OneToMany(mappedBy = "producto")
-    private List<DetalleFactura> detalles = new ArrayList<DetalleFactura>();
 
-    @ManyToOne
+
+    @OneToOne
     @JoinColumn(name= "fk_categoria")
     private Categoria categoria;
 

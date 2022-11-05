@@ -1,6 +1,7 @@
 package com.example.sportmode.entities;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,10 +24,9 @@ public class Factura implements Serializable {
     private int numero;
     private double total;
 
-    @OneToMany(mappedBy = "factura", orphanRemoval = true)
-    private List<DetalleFactura> detalles = new ArrayList<DetalleFactura>();
 
-    @ManyToOne
-    @JoinColumn(name = "fk_usuario")
-    private Usuario usuario;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DetalleFactura> detalleFacturas;
+
 }
