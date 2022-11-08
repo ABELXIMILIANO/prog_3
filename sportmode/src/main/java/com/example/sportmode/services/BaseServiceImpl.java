@@ -1,6 +1,8 @@
 package com.example.sportmode.services;
 
+import com.example.sportmode.mappers.EntityMapper;
 import com.example.sportmode.repositories.BaseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -10,10 +12,15 @@ import java.util.List;
 import java.util.Optional;
 
 
-public abstract class BaseServiceImpl<E,ID extends Serializable> implements BaseService<E,ID> {
 
-    
+
+public abstract class BaseServiceImpl<E,ID extends Serializable,DTO> implements BaseService<DTO,ID>{
+
+    @Autowired
     protected BaseRepository<E,ID> baseRepository;
+
+    @Autowired
+    protected EntityMapper<DTO,E> mapper;
 
     public BaseServiceImpl(BaseRepository<E, ID> baseRepository) {
         this.baseRepository = baseRepository;
@@ -22,10 +29,13 @@ public abstract class BaseServiceImpl<E,ID extends Serializable> implements Base
 
     @Override
     @Transactional
-    public List<E> findAll() throws Exception {
+    public List<DTO> findAll() throws Exception {
         try {
-            List<E>entities = baseRepository.findAll();
-            return entities;
+
+            List<DTO> DTOs = mapper.toListDTO(baseRepository.findAll());
+
+
+            return  DTOs;
         }catch(Exception e ){
             throw new Exception(e.getMessage());
         }
@@ -33,10 +43,10 @@ public abstract class BaseServiceImpl<E,ID extends Serializable> implements Base
 
     @Override
     @Transactional
-    public Page<E> findAll(Pageable pageable) throws Exception {
+    public Page<DTO> findAll(Pageable pageable) throws Exception {
         try{
-           Page<E> entities=baseRepository.findAll(pageable);
-            return entities;
+          // Page<DTO> listDTO=mapper.toListDTO(baseRepository.findAll(pageable));//necesito hacer un metodo en el entity implemnts
+            return null;
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
@@ -45,10 +55,11 @@ public abstract class BaseServiceImpl<E,ID extends Serializable> implements Base
 
     @Override
     @Transactional
-    public E findById(ID id) throws Exception {
+    public DTO findById(ID id) throws Exception {
         try {
             Optional<E> entityOptional=baseRepository.findById(id);
-            return entityOptional.get();
+
+            return  mapper.toEntityDTO(entityOptional.get());
         }catch(Exception e ){
             throw new Exception(e.getMessage());
 
@@ -57,10 +68,10 @@ public abstract class BaseServiceImpl<E,ID extends Serializable> implements Base
 
     @Override
     @Transactional
-    public E save(E entity) throws Exception {
+    public DTO save(DTO dto) throws Exception {
         try {
-            entity=baseRepository.save(entity);
-            return entity;
+            E entity= baseRepository.save(mapper.toEntity(dto));
+            return mapper.toEntityDTO(entity);
         }catch( Exception e ){
             throw new Exception(e.getMessage());
         }
@@ -68,12 +79,12 @@ public abstract class BaseServiceImpl<E,ID extends Serializable> implements Base
 
     @Override
     @Transactional
-    public E update(ID id, E entity) throws Exception {
+    public DTO update(ID id, DTO dto) throws Exception {
         try {
             Optional<E>entityOptional=baseRepository.findById(id);//en esta línea obtengo la entidad que quiero actualzar
             E entityUpdate=entityOptional.get(); //en esta linea guardo la entity en un objeto de tipo generico"E" llamado entityUpdate
-            entityUpdate=baseRepository.save(entity);//en esta línea
-            return entityUpdate;
+            entityUpdate=baseRepository.save(mapper.toEntity(dto));//en esta línea
+            return mapper.toEntityDTO(entityUpdate);
         }catch(Exception e){
             throw new Exception(e.getMessage());
         }

@@ -24,15 +24,11 @@ public class Usuario implements Serializable {
     private String email;
     private String contrasenia;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "fk_domicilio")
     private Domicilio domicilio;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "usuario_factura",
-            joinColumns = @JoinColumn(name = "usuario_id"),
-            inverseJoinColumns = @JoinColumn(name = "factura_id")
-    )
-    private List<Factura> facturas = new ArrayList<Factura>();
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
+    @JoinColumn(name = "fk_usuario")
+    private List<Factura> facturas=new ArrayList<>();
 }
