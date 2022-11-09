@@ -27,6 +27,7 @@ public class Producto implements Serializable {
     private String talle;
     private String color;
     private String imagenIlustracion;
+    private String marca;
 
 
 
