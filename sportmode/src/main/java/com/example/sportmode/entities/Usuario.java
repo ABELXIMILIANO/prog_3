@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,11 +14,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+
+
+
 @Setter
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private String nombre;
 	private String username;
 	private String email;
@@ -25,12 +29,12 @@ public class Usuario {
 	private String telefono;
 	private String tipo;
 	private String password;
-	
-	@OneToMany(mappedBy = "usuario")
-	private List<Producto> productos;
-	
-	@OneToMany(mappedBy = "usuario")
-	private List<Orden> ordenes;
+
+
+
+	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
+	@JoinColumn(name = "fk_usuario")
+	private List<Orden> ordenes=new ArrayList<>();
 	
 
 }

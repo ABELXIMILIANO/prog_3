@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.Serializable;
 
-public interface BaseController <E,ID extends Serializable> {
+public interface BaseController <E, ID extends Serializable> {
     public ResponseEntity<?>getAll();
     public ResponseEntity<?>getAll(Pageable pageable )throws Exception;
     public ResponseEntity<?>getOne(@PathVariable ID id);// @PathVariable: Esta anotación se utiliza para anotar argumentos del método del controlador de solicitudes.

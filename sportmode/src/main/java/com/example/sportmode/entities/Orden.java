@@ -18,17 +18,16 @@ import java.util.List;
 public class Orden {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private String numero;
 	private Date fechaCreacion;
 	private Date fechaRecibida;
 
 	private double total;
-	
-	@ManyToOne
-	private Usuario usuario;
-	
-	@OneToMany(mappedBy = "orden")
+
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "fk_orden")
 	private List<DetalleOrden> detalle;
 	
 

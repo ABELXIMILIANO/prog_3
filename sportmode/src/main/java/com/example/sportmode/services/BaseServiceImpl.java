@@ -1,6 +1,7 @@
 package com.example.sportmode.services;
 
 import com.example.sportmode.repositories.BaseRepository;
+import com.sun.xml.bind.v2.model.core.ID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -12,10 +13,10 @@ import java.util.Optional;
 
 public abstract class BaseServiceImpl<E,ID extends Serializable> implements BaseService<E,ID> {
 
-    
+
     protected BaseRepository<E,ID> baseRepository;
 
-    public BaseServiceImpl(BaseRepository<E, ID> baseRepository) {
+    public BaseServiceImpl(BaseRepository<E,ID> baseRepository) {
         this.baseRepository = baseRepository;
     }
 

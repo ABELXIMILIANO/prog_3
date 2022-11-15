@@ -17,16 +17,15 @@ import javax.persistence.*;
 public class DetalleOrden {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private String nombre;
 	private double cantidad;
 	private double precio;
 	private double total;
-	
+
+
 	@ManyToOne
-	private Orden orden;
-	
-	@ManyToOne
+	@JoinColumn(name = "fk_producto")
 	private Producto producto;
 	
 
