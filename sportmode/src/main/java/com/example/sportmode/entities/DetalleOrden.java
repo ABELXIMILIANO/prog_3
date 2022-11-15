@@ -6,31 +6,30 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "detalles")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Usuario {
+
+public class DetalleOrden {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nombre;
-	private String username;
-	private String email;
-	private String direccion;
-	private String telefono;
-	private String tipo;
-	private String password;
+	private double cantidad;
+	private double precio;
+	private double total;
 	
-	@OneToMany(mappedBy = "usuario")
-	private List<Producto> productos;
+	@ManyToOne
+	private Orden orden;
 	
-	@OneToMany(mappedBy = "usuario")
-	private List<Orden> ordenes;
+	@ManyToOne
+	private Producto producto;
 	
+
+
 
 }

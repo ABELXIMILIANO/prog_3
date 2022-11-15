@@ -6,31 +6,27 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
-
 
 @Entity
-@Table(name = "producto")
+@Table(name = "productos")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Producto implements Serializable {
+public class Producto {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private String nombre;
+	private String descripcion;
+	private String imagen;
+	private double precio;
+	private int cantidad;
+	
+	@ManyToOne
+	private Usuario usuario;
+	
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nombre;
-    private double precio;
-    private int stock;
-    private boolean activo;
-    private String talle;
-    private String color;
-
-
-
-    @OneToOne
-    @JoinColumn(name= "fk_categoria")
-    private Categoria categoria;
-
+	
+	
 }
